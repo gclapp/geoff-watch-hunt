@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1973 Rolex Datejust Hunt | Geoff's Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #C9A961;
+            --gold-light: #E8D5A3;
+            --blue: #2563EB;
+            --blue-dark: #1E40AF;
+            --black: #1A1A1A;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #E5E5E5;
+            --gray-300: #D4D4D4;
+            --gray-400: #A3A3A3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray-800) 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        header .subtitle {
+            color: var(--gold-light);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--gold);
+        }
+
+        .stat-card h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-500);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .filters {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-group label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-600);
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--gray-200);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--gold);
+        }
+
+        .filter-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+
+        .watch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .watch-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .watch-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -8px rgba(0,0,0,0.15);
+        }
+
+        .watch-card.favorite {
+            border-color: var(--blue);
+        }
+
+        .watch-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            background: var(--gray-100);
+            display: block;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .watch-image:hover {
+            opacity: 0.9;
+        }
+
+        .watch-image.no-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-400);
+            font-size: 0.875rem;
+        }
+
+        .watch-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--gray-100) 0%, white 100%);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .watch-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .watch-ref {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-top: 0.25rem;
+        }
+
+        .dial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .dial-badge.blue {
+            background: #DBEAFE;
+            color: var(--blue-dark);
+        }
+
+        .dial-badge.black {
+            background: var(--gray-800);
+            color: white;
+        }
+
+        .dial-badge.champagne {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .dial-badge.silver {
+            background: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .watch-body {
+            padding: 1.5rem;
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .spec {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spec-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-400);
+            margin-bottom: 0.25rem;
+        }
+
+        .spec-value {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--gray-800);
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-tag.unknown {
+            background: var(--gray-300);
+            color: var(--gray-600);
+        }
+
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .source-link:hover {
+            text-decoration: underline;
+        }
+
+        .notes {
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 0.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .status-badge {
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-badge.pending {
+            background: #FEF3C7;
+            color: #92400E;
+        }
+
+        .status-badge.liked {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .status-badge.passed {
+            background: #FEE2E2;
+            color: #991B1B;
+        }
+
+        .status-badge.sold {
+            background: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .preferences-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .preferences-panel h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+
+        .pref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .pref-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pref-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .pref-dot.favorite {
+            background: var(--blue);
+        }
+
+        .pref-dot.acceptable {
+            background: var(--gold);
+        }
+
+        .pref-dot.avoid {
+            background: var(--danger);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.875rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .sources-panel {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .sources-panel h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .source-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--gray-800);
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .source-item:hover {
+            border-color: var(--gold);
+            background: white;
+        }
+
+        .source-item .source-name {
+            font-weight: 600;
+        }
+
+        .source-item .source-status {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .source-item .source-status.active {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+
+        .source-item .source-status.pending {
+            background: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .source-item:hover .source-status {
+            background: var(--gold);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .watch-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏛️ 1973 Rolex Datejust Hunt</h1>
+        <p class="subtitle">Geoff's Personal Watch Collection Tracker</p>
+    </header>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-card">
+                <h3>Active Listings</h3>
+                <div class="value" id="active-count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Blue Dials</h3>
+                <div class="value" id="blue-count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Black Dials</h3>
+                <div class="value" id="black-count">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Saved for Later</h3>
+                <div class="value" id="liked-count">0</div>
+            </div>
+        </div>
+
+        <div class="preferences-panel">
+            <h2>🎯 Hunt Preferences</h2>
+            <div class="pref-grid">
+                <div class="pref-item">
+                    <span class="pref-dot favorite"></span>
+                    <span><strong>Favorites:</strong> Blue & Black dials</span>
+                </div>
+                <div class="pref-item">
+                    <span class="pref-dot acceptable"></span>
+                    <span><strong>Acceptable:</strong> Champagne & Linen dials</span>
+                </div>
+                <div class="pref-item">
+                    <span class="pref-dot avoid"></span>
+                    <span><strong>Avoid:</strong> Silver & White dials</span>
+                </div>
+                <div class="pref-item">
+                    <span style="color: var(--gold);">⚜️</span>
+                    <span><strong>Case:</strong> Gold or Two-tone</span>
+                </div>
+                <div class="pref-item">
+                    <span style="color: var(--gold);">📏</span>
+                    <span><strong>Size:</strong> 36mm or larger</span>
+                </div>
+                <div class="pref-item">
+                    <span style="color: var(--gold);">σ</span>
+                    <span><strong>Sigma Dial:</strong> Preferred</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label>Filter by:</label>
+            </div>
+            <button class="filter-btn active" data-filter="all">All Watches</button>
+            <button class="filter-btn" data-filter="blue">🔵 Blue Dials</button>
+            <button class="filter-btn" data-filter="black">⚫ Black Dials</button>
+            <button class="filter-btn" data-filter="twotone">⭐ Two-Tone Only</button>
+            <button class="filter-btn" data-filter="pending">⏳ Pending</button>
+        </div>
+
+        <div class="watch-grid" id="watch-grid">
+            <!-- Watches will be loaded here -->
+        </div>
+
+        <div class="sources-panel">
+            <h2>🔗 Monitored Sources</h2>
+            <div class="sources-grid" id="sources-grid">
+                <!-- Sources will be loaded here -->
+            </div>
+        </div>
+
+        <div class="last-updated">
+            <p>Last updated: <span id="last-updated">Loading...</span></p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem;">Dashboard auto-refreshes daily</p>
+        </div>
+    </div>
+
+    <script>
+        // Load and display watch data
+        async function loadWatches() {
+            try {
+                const response = await fetch('watch-data.json');
+                const data = await response.json();
+                
+                document.getElementById('last-updated').textContent = 
+                    new Date(data.lastUpdated).toLocaleString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    });
+
+                updateStats(data.watches);
+                renderWatches(data.watches);
+                setupFilters(data.watches);
+                renderSources(data.sourcesMonitored);
+            } catch (error) {
+                console.error('Error loading watch data:', error);
+                document.getElementById('watch-grid').innerHTML = 
+                    '<p style="text-align: center; color: var(--gray-500);">Error loading watch data. Please refresh.</p>';
+            }
+        }
+
+        function updateStats(watches) {
+            const active = watches.filter(w => w.status !== 'sold').length;
+            const blue = watches.filter(w => w.dialColor === 'blue').length;
+            const black = watches.filter(w => w.dialColor === 'black').length;
+            const liked = watches.filter(w => w.status === 'liked').length;
+
+            document.getElementById('active-count').textContent = active;
+            document.getElementById('blue-count').textContent = blue;
+            document.getElementById('black-count').textContent = black;
+            document.getElementById('liked-count').textContent = liked;
+        }
+
+        function renderWatches(watches, filter = 'all') {
+            const grid = document.getElementById('watch-grid');
+            grid.innerHTML = '';
+
+            const filtered = watches.filter(watch => {
+                if (filter === 'all') return true;
+                if (filter === 'blue') return watch.dialColor === 'blue';
+                if (filter === 'black') return watch.dialColor === 'black';
+                if (filter === 'twotone') return watch.case.toLowerCase().includes('two-tone');
+                if (filter === 'pending') return watch.status === 'pending_review';
+                return true;
+            });
+
+            filtered.forEach(watch => {
+                const card = createWatchCard(watch);
+                grid.appendChild(card);
+            });
+        }
+
+        function createWatchCard(watch) {
+            const card = document.createElement('div');
+            card.className = `watch-card ${watch.dialColor === 'blue' || watch.dialColor === 'black' ? 'favorite' : ''}`;
+
+            const dialBadgeClass = watch.dialColor === 'blue' ? 'blue' : 
+                                  watch.dialColor === 'black' ? 'black' :
+                                  watch.dialColor === 'champagne' ? 'champagne' : 'silver';
+
+            const priceClass = watch.price ? '' : 'unknown';
+            const priceText = watch.price || 'Price on Request';
+
+            const statusClass = watch.status === 'pending_review' ? 'pending' :
+                               watch.status === 'liked' ? 'liked' :
+                               watch.status === 'passed' ? 'passed' : 'sold';
+
+            const statusText = watch.status === 'pending_review' ? 'Pending Review' :
+                              watch.status === 'liked' ? 'Liked ⭐' :
+                              watch.status === 'passed' ? 'Passed' : 'Sold';
+
+            // Create image HTML
+            let imageHtml = '';
+            if (watch.imageUrl) {
+                imageHtml = `<a href="${watch.listingUrl || watch.link}" target="_blank"><img src="${watch.imageUrl}" alt="Rolex Datejust ${watch.reference}" class="watch-image" onerror="this.parentElement.innerHTML='<div class=\'watch-image no-image\'>📷 Image unavailable</div>'"></a>`;
+            } else {
+                imageHtml = `<a href="${watch.listingUrl || watch.link}" target="_blank"><div class="watch-image no-image">📷 Click to view photos</div></a>`;
+            }
+
+            card.innerHTML = `
+                ${imageHtml}
+                <div class="watch-header">
+                    <div>
+                        <div class="watch-title">Rolex Datejust ${watch.reference}</div>
+                        <div class="watch-ref">${watch.year} • ${watch.size}</div>
+                    </div>
+                    <span class="dial-badge ${dialBadgeClass}">${watch.dialColor}</span>
+                </div>
+                <div class="watch-body">
+                    <span class="price-tag ${priceClass}">${priceText}</span>
+                    
+                    <div class="spec-grid">
+                        <div class="spec">
+                            <span class="spec-label">Dial</span>
+                            <span class="spec-value">${watch.dialType}</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Case</span>
+                            <span class="spec-value">${watch.case}</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Bracelet</span>
+                            <span class="spec-value">${watch.bracelet}</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec-label">Source</span>
+                            <span class="spec-value">${watch.source}</span>
+                        </div>
+                    </div>
+
+                    <a href="${watch.link}" target="_blank" class="source-link">
+                        View Listing →
+                    </a>
+
+                    <div class="notes">
+                        <strong>Notes:</strong> ${watch.notes}
+                    </div>
+
+                    <div class="status-bar">
+                        <span class="status-badge ${statusClass}">${statusText}</span>
+                        ${watch.geoffRating ? `<span class="status-badge liked">Rating: ${watch.geoffRating}/10</span>` : ''}
+                    </div>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function setupFilters(watches) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    renderWatches(watches, btn.dataset.filter);
+                });
+            });
+        }
+
+        function renderSources(sources) {
+            const grid = document.getElementById('sources-grid');
+            grid.innerHTML = '';
+
+            sources.forEach(source => {
+                const link = document.createElement('a');
+                link.href = source.url;
+                link.target = '_blank';
+                link.className = 'source-item';
+                
+                const statusClass = source.active ? 'active' : 'pending';
+                const statusText = source.active ? 'Active' : 'Soon';
+                
+                link.innerHTML = `
+                    <span class="source-name">${source.name}</span>
+                    <span class="source-status ${statusClass}">${statusText}</span>
+                `;
+                
+                grid.appendChild(link);
+            });
+        }
+
+        // Load on page load
+        loadWatches();
+
+        // Auto-refresh every 5 minutes
+        setInterval(loadWatches, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
