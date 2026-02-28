@@ -1,9 +1,18 @@
 {
-  "lastUpdated": "2026-02-28T02:38:00Z",
+  "lastUpdated": "2026-02-28T03:04:12Z",
   "preferences": {
-    "favoriteDials": ["blue", "black"],
-    "acceptableDials": ["champagne", "linen"],
-    "avoidDials": ["silver", "white"],
+    "favoriteDials": [
+      "blue",
+      "black"
+    ],
+    "acceptableDials": [
+      "champagne",
+      "linen"
+    ],
+    "avoidDials": [
+      "silver",
+      "white"
+    ],
     "case": "gold or two-tone",
     "size": "36mm or larger",
     "sigmaDial": "preferred but not required",
@@ -129,11 +138,35 @@
     }
   ],
   "sourcesMonitored": [
-    {"name": "Bob's Watches", "url": "https://www.bobswatches.com", "active": true},
-    {"name": "Chrono24", "url": "https://www.chrono24.com", "active": true},
-    {"name": "Bulang & Sons", "url": "https://bulangandsons.com", "active": true},
-    {"name": "Bezel", "url": "https://getbezel.com", "active": false},
-    {"name": "eBay", "url": "https://www.ebay.com", "active": false},
-    {"name": "Craft & Tailored", "url": "https://www.craftandtailored.com", "active": false}
+    {
+      "name": "Bob's Watches",
+      "url": "https://www.bobswatches.com",
+      "active": true
+    },
+    {
+      "name": "Chrono24",
+      "url": "https://www.chrono24.com",
+      "active": true
+    },
+    {
+      "name": "Bulang & Sons",
+      "url": "https://bulangandsons.com",
+      "active": true
+    },
+    {
+      "name": "Bezel",
+      "url": "https://getbezel.com",
+      "active": false
+    },
+    {
+      "name": "eBay",
+      "url": "https://www.ebay.com",
+      "active": false
+    },
+    {
+      "name": "Craft & Tailored",
+      "url": "https://www.craftandtailored.com",
+      "active": false
+    }
   ]
 }
