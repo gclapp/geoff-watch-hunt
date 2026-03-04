@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-04T17:00:04Z",
+  "lastUpdated": "2026-03-04T22:40:00Z",
   "preferences": {
     "favoriteDials": [
       "blue",
@@ -19,6 +19,66 @@
     "targetYear": 1973
   },
   "watches": [
+    {
+      "id": 6,
+      "year": 1973,
+      "reference": "1601",
+      "dialColor": "blue",
+      "dialType": "Blue (serviced vintage)",
+      "case": "Steel",
+      "size": "36mm",
+      "bracelet": "Jubilee",
+      "price": null,
+      "source": "Chrono24",
+      "link": "https://www.chrono24.com/rolex/rolex-c1973-serviced-vintage-datejust-1601-blue--dial-36mm-cal1570-1549--id45062642.htm",
+      "imageUrl": null,
+      "listingUrl": "https://www.chrono24.com/rolex/rolex-c1973-serviced-vintage-datejust-1601-blue--dial-36mm-cal1570-1549--id45062642.htm",
+      "status": "pending_review",
+      "dateAdded": "2026-03-04",
+      "notes": "Serviced vintage, Cal 1570, from email Mar 4 7:26 AM",
+      "geoffRating": null,
+      "geoffNotes": null
+    },
+    {
+      "id": 7,
+      "year": 1973,
+      "reference": "1603",
+      "dialColor": "silver",
+      "dialType": "Silver dial",
+      "case": "Steel",
+      "size": "36mm",
+      "bracelet": "Unknown",
+      "price": null,
+      "source": "Chrono24",
+      "link": "https://www.chrono24.com/rolex/datejust-1603-silver-dial-1973--id45099689.htm",
+      "imageUrl": null,
+      "listingUrl": "https://www.chrono24.com/rolex/datejust-1603-silver-dial-1973--id45099689.htm",
+      "status": "pending_review",
+      "dateAdded": "2026-03-04",
+      "notes": "Silver dial (not preferred), from email Mar 4 2:29 PM",
+      "geoffRating": null,
+      "geoffNotes": null
+    },
+    {
+      "id": 8,
+      "year": 1973,
+      "reference": "1803",
+      "dialColor": "unknown",
+      "dialType": "Day-Date",
+      "case": "Gold",
+      "size": "36mm",
+      "bracelet": "President",
+      "price": null,
+      "source": "Chrono24",
+      "link": "https://www.chrono24.com/rolex/day-date-1803--id45094053.htm",
+      "imageUrl": null,
+      "listingUrl": "https://www.chrono24.com/rolex/day-date-1803--id45094053.htm",
+      "status": "pending_review",
+      "dateAdded": "2026-03-04",
+      "notes": "Day-Date (not Datejust), from email Mar 4 2:29 PM",
+      "geoffRating": null,
+      "geoffNotes": null
+    },
     {
       "id": 1,
       "year": 1978,
