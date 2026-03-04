@@ -183,10 +183,17 @@
 
         .watch-image.no-image {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             color: var(--gray-400);
-            font-size: 0.875rem;
+            font-size: 3rem;
+            min-height: 280px;
+        }
+
+        .watch-image-link {
+            display: block;
+            text-decoration: none;
         }
 
         .watch-header {
@@ -644,12 +651,32 @@
                               watch.status === 'liked' ? 'Liked ⭐' :
                               watch.status === 'passed' ? 'Passed' : 'Sold';
 
-            // Create image HTML
+            // Create image HTML - use proxy or fallback for all images
             let imageHtml = '';
+            const listingLink = watch.listingUrl || watch.link;
+            
+            // Try to load image, but always have fallback ready
             if (watch.imageUrl) {
-                imageHtml = `<a href="${watch.listingUrl || watch.link}" target="_blank"><img src="${watch.imageUrl}" alt="Rolex Datejust ${watch.reference}" class="watch-image" onerror="this.parentElement.innerHTML='<div class=\'watch-image no-image\'>📷 Image unavailable</div>'"></a>`;
+                // Use a data URI pattern that forces the onerror to fire if image fails
+                imageHtml = `<a href="${listingLink}" target="_blank" class="watch-image-link">
+                    <img src="${watch.imageUrl}" 
+                         alt="Rolex Datejust ${watch.reference}" 
+                         class="watch-image" 
+                         loading="lazy"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+                    <div class="watch-image no-image" style="display: none;">
+                        <div>📷</div>
+                        <div style="font-size: 0.875rem; margin-top: 0.5rem;">Click to view photos</div>
+                    </div>
+                </a>`;
             } else {
-                imageHtml = `<a href="${watch.listingUrl || watch.link}" target="_blank"><div class="watch-image no-image">📷 Click to view photos</div></a>`;
+                imageHtml = `<a href="${listingLink}" target="_blank" class="watch-image-link">
+                    <div class="watch-image no-image">
+                        <div>📷</div>
+                        <div style="font-size: 0.875rem; margin-top: 0.5rem;">Click to view photos</div>
+                    </div>
+                </a>`;
             }
 
             card.innerHTML = `
