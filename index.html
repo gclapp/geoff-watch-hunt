@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vintage Rolex Datejust Hunt | Geoff's Dashboard</title>
+    <title>Watch Hunt Results | Geoff's Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -60,6 +60,27 @@
             color: var(--gold-light);
             font-size: 1.1rem;
             font-weight: 300;
+        }
+
+        .nav-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--gold-light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--gold);
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: var(--gold);
+            color: var(--black);
         }
 
         .container {
@@ -492,8 +513,12 @@
 </head>
 <body>
     <header>
-        <h1>🏛️ Vintage Rolex Datejust Hunt</h1>
-        <p class="subtitle">Geoff's Personal Watch Collection Tracker</p>
+        <h1>🏛️ Watch Hunt Results</h1>
+        <p class="subtitle" id="search-subtitle">Geoff's Personal Watch Collection Tracker</p>
+        <div class="nav-links">
+            <a href="cover.html">← All Searches</a>
+            <a href="index.html">Current Results</a>
+        </div>
     </header>
 
     <div class="container">
@@ -761,7 +786,33 @@
             });
         }
 
+        // Get search ID from URL if present
+        function getSearchIdFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('search');
+        }
+
+        // Load search config to get search name
+        async function loadSearchInfo() {
+            const searchId = getSearchIdFromUrl();
+            if (searchId) {
+                try {
+                    const response = await fetch('search-config.json');
+                    const config = await response.json();
+                    const search = config.searches.find(s => s.id === searchId) || 
+                                  config.completedSearches.find(s => s.id === searchId);
+                    if (search) {
+                        document.getElementById('search-subtitle').textContent = search.name;
+                        document.title = `${search.name} | Watch Hunt Results`;
+                    }
+                } catch (e) {
+                    console.error('Failed to load search info:', e);
+                }
+            }
+        }
+
         // Load on page load
+        loadSearchInfo();
         loadWatches();
 
         // Auto-refresh every 5 minutes
