@@ -4,15 +4,60 @@
       "id": "rolex-datejust-1973",
       "name": "1973 Rolex Datejust",
       "brand": "Rolex",
-      "modelNumbers": ["1601", "1603", "16014"],
-      "years": {"min": 1970, "max": 1985},
-      "dialColors": ["blue", "black", "champagne", "linen"],
-      "caseMaterials": ["gold", "two-tone"],
-      "sources": ["chrono24"],
+      "modelNumbers": [
+        "1601",
+        "1603",
+        "16014"
+      ],
+      "years": {
+        "min": 1970,
+        "max": 1985
+      },
+      "dialColors": [
+        "blue",
+        "black",
+        "champagne",
+        "linen"
+      ],
+      "caseMaterials": [
+        "gold",
+        "two-tone"
+      ],
+      "sources": [
+        "chrono24"
+      ],
       "status": "active",
       "createdAt": "2026-03-09",
       "lastRun": "2026-03-09T23:49:26Z",
       "watchesFound": 14,
+      "schedule": "twice_daily"
+    },
+    {
+      "id": "search-1773100431",
+      "name": "Omega Speedmaster Moonwatch",
+      "brand": "Omega",
+      "modelNumbers": [
+        "145.022",
+        "145.0022",
+        "3570.50"
+      ],
+      "years": {
+        "min": 1965,
+        "max": 1975
+      },
+      "dialColors": [
+        "black"
+      ],
+      "caseMaterials": [
+        "steel"
+      ],
+      "sources": [
+        "chrono24"
+      ],
+      "status": "active",
+      "createdAt": "2026-03-09",
+      "lastRun": "2026-03-09T23:53:51.385969",
+      "watchesFound": 0,
       "schedule": "twice_daily"
     }
   ],
