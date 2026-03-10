@@ -704,12 +704,17 @@
                 </a>`;
             }
 
+            // Get search name if available
+            const searchName = watch.searchName || (watch.searchId ? 'Unknown Search' : 'Manual Entry');
+            const brandName = watch.brand || 'Rolex';
+            
             card.innerHTML = `
                 ${imageHtml}
                 <div class="watch-header">
                     <div>
-                        <div class="watch-title">Rolex Datejust ${watch.reference}</div>
+                        <div class="watch-title">${brandName} ${watch.reference}</div>
                         <div class="watch-ref">${watch.year} • ${watch.size}</div>
+                        ${watch.searchName ? `<div style="font-size: 0.75rem; color: var(--gold); margin-top: 2px;">🔍 ${watch.searchName}</div>` : ''}
                     </div>
                     <span class="dial-badge ${dialBadgeClass}">${watch.dialColor}</span>
                 </div>
