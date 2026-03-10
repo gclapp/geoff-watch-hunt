@@ -24,11 +24,16 @@
         "two-tone"
       ],
       "sources": [
-        "chrono24"
+        "chrono24",
+        "ebay",
+        "bobs_watches",
+        "bulang_sons",
+        "bezel",
+        "crown_and_caliber"
       ],
       "status": "active",
       "createdAt": "2026-03-09",
-      "lastRun": "2026-03-10T00:00:10.695411",
+      "lastRun": "2026-03-10T00:08:10.794526",
       "watchesFound": 5,
       "schedule": "twice_daily"
     },
@@ -52,11 +57,16 @@
         "steel"
       ],
       "sources": [
-        "chrono24"
+        "chrono24",
+        "ebay",
+        "bobs_watches",
+        "bulang_sons",
+        "bezel",
+        "crown_and_caliber"
       ],
       "status": "active",
       "createdAt": "2026-03-09",
-      "lastRun": "2026-03-10T00:00:23.598821",
+      "lastRun": "2026-03-10T00:08:23.677477",
       "watchesFound": 0,
       "schedule": "twice_daily"
     }
