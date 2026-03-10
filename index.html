@@ -27,11 +27,7 @@
             --danger: #EF4444;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -53,7 +49,6 @@
             font-size: 2.5rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
         }
 
         header .subtitle {
@@ -119,6 +114,61 @@
             color: var(--gray-900);
         }
 
+        /* Vendor Filter Section */
+        .vendor-filters {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .vendor-filters h3 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+        }
+
+        .vendor-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .vendor-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--gray-200);
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .vendor-btn:hover {
+            border-color: var(--gold);
+            transform: translateY(-1px);
+        }
+
+        .vendor-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: white;
+        }
+
+        .vendor-logo {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        /* Regular Filters */
         .filters {
             background: white;
             border-radius: 12px;
@@ -188,18 +238,24 @@
             border-color: var(--blue);
         }
 
-        .watch-image {
+        .watch-image-container {
+            position: relative;
             width: 100%;
             height: 280px;
-            object-fit: cover;
             background: var(--gray-100);
-            display: block;
-            cursor: pointer;
-            transition: opacity 0.2s;
+            overflow: hidden;
         }
 
-        .watch-image:hover {
-            opacity: 0.9;
+        .watch-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .watch-card:hover .watch-image {
+            transform: scale(1.05);
         }
 
         .watch-image.no-image {
@@ -209,18 +265,32 @@
             justify-content: center;
             color: var(--gray-400);
             font-size: 3rem;
-            min-height: 280px;
         }
 
-        .watch-image-link {
-            display: block;
-            text-decoration: none;
+        .vendor-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .vendor-badge img {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
         }
 
         .watch-header {
             padding: 1.5rem;
-            background: linear-gradient(135deg, var(--gray-100) 0%, white 100%);
-            border-bottom: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-100);
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -231,48 +301,42 @@
             font-size: 1.25rem;
             font-weight: 600;
             color: var(--gray-900);
+            margin-bottom: 0.25rem;
         }
 
         .watch-ref {
             font-size: 0.875rem;
             color: var(--gray-500);
-            margin-top: 0.25rem;
         }
 
         .dial-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
             padding: 0.375rem 0.75rem;
             border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
-        .dial-badge.blue {
-            background: #DBEAFE;
-            color: var(--blue-dark);
-        }
-
-        .dial-badge.black {
-            background: var(--gray-800);
-            color: white;
-        }
-
-        .dial-badge.champagne {
-            background: #FEF3C7;
-            color: #92400E;
-        }
-
-        .dial-badge.silver {
-            background: var(--gray-200);
-            color: var(--gray-600);
-        }
+        .dial-badge.blue { background: #dbeafe; color: #1e40af; }
+        .dial-badge.black { background: var(--gray-800); color: white; }
+        .dial-badge.champagne { background: #fef3c7; color: #92400e; }
+        .dial-badge.silver { background: var(--gray-200); color: var(--gray-700); }
 
         .watch-body {
             padding: 1.5rem;
+        }
+
+        .price-tag {
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        .price-tag.unknown {
+            color: var(--gray-400);
+            font-size: 1rem;
         }
 
         .spec-grid {
@@ -289,211 +353,71 @@
 
         .spec-label {
             font-size: 0.75rem;
-            font-weight: 600;
+            color: var(--gray-500);
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            color: var(--gray-400);
-            margin-bottom: 0.25rem;
         }
 
         .spec-value {
-            font-size: 0.9375rem;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--gray-800);
         }
 
-        .price-tag {
-            display: inline-block;
-            background: var(--gold);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
-        }
-
-        .price-tag.unknown {
-            background: var(--gray-300);
-            color: var(--gray-600);
-        }
-
         .source-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--blue);
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gray-100);
+            color: var(--gray-700);
             text-decoration: none;
+            border-radius: 8px;
             font-weight: 500;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
+            transition: all 0.2s;
         }
 
         .source-link:hover {
-            text-decoration: underline;
+            background: var(--gold);
+            color: var(--black);
         }
 
         .notes {
-            background: var(--gray-50);
+            margin-top: 1rem;
             padding: 1rem;
+            background: var(--gray-50);
             border-radius: 8px;
             font-size: 0.875rem;
             color: var(--gray-600);
-            margin-bottom: 1rem;
         }
 
         .status-bar {
+            margin-top: 1rem;
             display: flex;
             gap: 0.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--gray-200);
+            flex-wrap: wrap;
         }
 
         .status-badge {
             padding: 0.375rem 0.75rem;
-            border-radius: 6px;
+            border-radius: 20px;
             font-size: 0.75rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
         }
 
-        .status-badge.pending {
-            background: #FEF3C7;
-            color: #92400E;
-        }
+        .status-badge.pending { background: #fef3c7; color: #92400e; }
+        .status-badge.liked { background: #dbeafe; color: #1e40af; }
+        .status-badge.passed { background: var(--gray-200); color: var(--gray-600); }
+        .status-badge.sold { background: #fee2e2; color: #991b1b; }
 
-        .status-badge.liked {
-            background: #D1FAE5;
-            color: #065F46;
-        }
-
-        .status-badge.passed {
-            background: #FEE2E2;
-            color: #991B1B;
-        }
-
-        .status-badge.sold {
-            background: var(--gray-200);
-            color: var(--gray-600);
-        }
-
-        .preferences-panel {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .preferences-panel h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--gray-900);
-        }
-
-        .pref-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .pref-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .pref-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .pref-dot.favorite {
-            background: var(--blue);
-        }
-
-        .pref-dot.acceptable {
-            background: var(--gold);
-        }
-
-        .pref-dot.avoid {
-            background: var(--danger);
-        }
-
-        .last-updated {
+        .empty-state {
             text-align: center;
+            padding: 4rem 2rem;
             color: var(--gray-500);
-            font-size: 0.875rem;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--gray-200);
         }
 
-        .sources-panel {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .sources-panel h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--gray-900);
-        }
-
-        .sources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .source-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem;
-            background: var(--gray-50);
-            border-radius: 8px;
-            text-decoration: none;
-            color: var(--gray-800);
-            transition: all 0.2s;
-            border: 2px solid transparent;
-        }
-
-        .source-item:hover {
-            border-color: var(--gold);
-            background: white;
-        }
-
-        .source-item .source-name {
-            font-weight: 600;
-        }
-
-        .source-item .source-status {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-        }
-
-        .source-item .source-status.active {
-            background: #D1FAE5;
-            color: #065F46;
-        }
-
-        .source-item .source-status.pending {
-            background: var(--gray-200);
-            color: var(--gray-600);
-        }
-
-        .source-item:hover .source-status {
-            background: var(--gold);
-            color: white;
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray-500);
         }
 
         @media (max-width: 768px) {
@@ -505,8 +429,8 @@
                 font-size: 1.75rem;
             }
             
-            .spec-grid {
-                grid-template-columns: 1fr;
+            .vendor-grid {
+                justify-content: center;
             }
         }
     </style>
@@ -532,135 +456,145 @@
                 <div class="value" id="blue-count">0</div>
             </div>
             <div class="stat-card">
-                <h3>Black Dials</h3>
-                <div class="value" id="black-count">0</div>
+                <h3>Gold/Two-Tone</h3>
+                <div class="value" id="gold-count">0</div>
             </div>
             <div class="stat-card">
-                <h3>Saved for Later</h3>
-                <div class="value" id="liked-count">0</div>
+                <h3>1970s Era</h3>
+                <div class="value" id="seventies-count">0</div>
             </div>
         </div>
 
-        <div class="preferences-panel">
-            <h2>🎯 Hunt Preferences</h2>
-            <div class="pref-grid">
-                <div class="pref-item">
-                    <span class="pref-dot favorite"></span>
-                    <span><strong>Favorites:</strong> Blue & Black dials</span>
-                </div>
-                <div class="pref-item">
-                    <span class="pref-dot acceptable"></span>
-                    <span><strong>Acceptable:</strong> Champagne & Linen dials</span>
-                </div>
-                <div class="pref-item">
-                    <span class="pref-dot avoid"></span>
-                    <span><strong>Avoid:</strong> Silver & White dials</span>
-                </div>
-                <div class="pref-item">
-                    <span style="color: var(--gold);">⚜️</span>
-                    <span><strong>Case:</strong> Gold or Two-tone</span>
-                </div>
-                <div class="pref-item">
-                    <span style="color: var(--gold);">📏</span>
-                    <span><strong>Size:</strong> 36mm or larger</span>
-                </div>
-                <div class="pref-item">
-                    <span style="color: var(--gold);">σ</span>
-                    <span><strong>Sigma Dial:</strong> Preferred</span>
-                </div>
+        <!-- Vendor Filters -->
+        <div class="vendor-filters">
+            <h3>Filter by Vendor</h3>
+            <div class="vendor-grid" id="vendor-filters">
+                <!-- Populated by JavaScript -->
             </div>
         </div>
 
+        <!-- Regular Filters -->
         <div class="filters">
             <div class="filter-group">
-                <label>Filter by:</label>
+                <label>Filter:</label>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="blue">Blue Dials</button>
+                <button class="filter-btn" data-filter="champagne">Champagne</button>
+                <button class="filter-btn" data-filter="pending">Pending Review</button>
             </div>
-            <button class="filter-btn active" data-filter="all">All Watches</button>
-            <button class="filter-btn" data-filter="blue">🔵 Blue Dials</button>
-            <button class="filter-btn" data-filter="black">⚫ Black Dials</button>
-            <button class="filter-btn" data-filter="twotone">⭐ Two-Tone Only</button>
-            <button class="filter-btn" data-filter="pending">⏳ Pending</button>
         </div>
 
         <div class="watch-grid" id="watch-grid">
-            <!-- Watches will be loaded here -->
-        </div>
-
-        <div class="sources-panel">
-            <h2>🔗 Monitored Sources</h2>
-            <div class="sources-grid" id="sources-grid">
-                <!-- Sources will be loaded here -->
-            </div>
-        </div>
-
-        <div class="last-updated">
-            <p>Last updated: <span id="last-updated">Loading...</span></p>
-            <p style="margin-top: 0.5rem; font-size: 0.75rem;">Dashboard auto-refreshes daily</p>
+            <div class="loading">Loading watches...</div>
         </div>
     </div>
 
     <script>
-        // Load and display watch data
+        // Vendor logos and display names
+        const VENDOR_CONFIG = {
+            'Chrono24': { logo: 'https://www.chrono24.com/favicon.ico', color: '#1a1a2e' },
+            'eBay': { logo: 'https://www.ebay.com/favicon.ico', color: '#e53238' },
+            "Bob's Watches": { logo: 'https://www.bobswatches.com/favicon.ico', color: '#1a1a2e' },
+            'Bulang & Sons': { logo: 'https://bulangandsons.com/favicon.ico', color: '#1a1a2e' },
+            'Bezel': { logo: 'https://www.getbezel.com/favicon.ico', color: '#1a1a2e' },
+            'Crown & Caliber': { logo: 'https://www.crownandcaliber.com/favicon.ico', color: '#1a1a2e' },
+            'WoE': { logo: 'https://watchesofespionage.com/favicon.ico', color: '#1a1a2e' },
+            'WatchRecon': { logo: 'https://www.watchrecon.com/favicon.ico', color: '#1a1a2e' },
+            'Reddit r/Watchexchange': { logo: 'https://www.reddit.com/favicon.ico', color: '#ff4500' }
+        };
+
+        let allWatches = [];
+        let activeVendorFilter = 'all';
+
         async function loadWatches() {
             try {
                 const response = await fetch('watch-data.json');
                 const data = await response.json();
+                allWatches = data.watches || [];
                 
-                document.getElementById('last-updated').textContent = 
-                    new Date(data.lastUpdated).toLocaleString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric',
-                        hour: 'numeric',
-                        minute: '2-digit'
-                    });
-
-                updateStats(data.watches);
-                renderWatches(data.watches);
-                setupFilters(data.watches);
-                renderSources(data.sourcesMonitored);
+                updateStats(allWatches);
+                renderVendorFilters(allWatches);
+                renderWatches(allWatches);
+                setupFilters();
             } catch (error) {
-                console.error('Error loading watch data:', error);
+                console.error('Failed to load watches:', error);
                 document.getElementById('watch-grid').innerHTML = 
-                    '<p style="text-align: center; color: var(--gray-500);">Error loading watch data. Please refresh.</p>';
+                    '<div class="empty-state">Failed to load watches. Please try again later.</div>';
             }
         }
 
         function updateStats(watches) {
-            const active = watches.filter(w => w.status !== 'sold').length;
-            const blue = watches.filter(w => w.dialColor === 'blue').length;
-            const black = watches.filter(w => w.dialColor === 'black').length;
-            const liked = watches.filter(w => w.status === 'liked').length;
+            document.getElementById('active-count').textContent = watches.length;
+            document.getElementById('blue-count').textContent = watches.filter(w => w.dialColor === 'blue').length;
+            document.getElementById('gold-count').textContent = watches.filter(w => 
+                w.case.toLowerCase().includes('gold') || w.case.toLowerCase().includes('two-tone')
+            ).length;
+            document.getElementById('seventies-count').textContent = watches.filter(w => 
+                w.year >= 1970 && w.year <= 1979
+            ).length;
+        }
 
-            document.getElementById('active-count').textContent = active;
-            document.getElementById('blue-count').textContent = blue;
-            document.getElementById('black-count').textContent = black;
-            document.getElementById('liked-count').textContent = liked;
+        function renderVendorFilters(watches) {
+            const vendors = [...new Set(watches.map(w => w.source))].sort();
+            const container = document.getElementById('vendor-filters');
+            
+            let html = `
+                <button class="vendor-btn active" data-vendor="all">
+                    <span>All Vendors</span>
+                </button>
+            `;
+            
+            vendors.forEach(vendor => {
+                const config = VENDOR_CONFIG[vendor] || { logo: '', color: '#1a1a2e' };
+                const count = watches.filter(w => w.source === vendor).length;
+                html += `
+                    <button class="vendor-btn" data-vendor="${vendor}">
+                        <img src="${config.logo}" alt="${vendor}" class="vendor-logo" onerror="this.style.display='none'">
+                        <span>${vendor} (${count})</span>
+                    </button>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            // Add click handlers
+            container.querySelectorAll('.vendor-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    container.querySelectorAll('.vendor-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    activeVendorFilter = btn.dataset.vendor;
+                    applyFilters();
+                });
+            });
         }
 
         function renderWatches(watches, filter = 'all') {
             const grid = document.getElementById('watch-grid');
-            grid.innerHTML = '';
+            
+            let filtered = watches;
+            if (filter !== 'all') {
+                filtered = watches.filter(watch => {
+                    if (filter === 'blue') return watch.dialColor === 'blue';
+                    if (filter === 'champagne') return watch.dialColor === 'champagne';
+                    if (filter === 'pending') return watch.status === 'pending_review';
+                    return true;
+                });
+            }
+            
+            // Apply vendor filter
+            if (activeVendorFilter !== 'all') {
+                filtered = filtered.filter(w => w.source === activeVendorFilter);
+            }
 
-            const filtered = watches.filter(watch => {
-                if (filter === 'all') return true;
-                if (filter === 'blue') return watch.dialColor === 'blue';
-                if (filter === 'black') return watch.dialColor === 'black';
-                if (filter === 'twotone') return watch.case.toLowerCase().includes('two-tone');
-                if (filter === 'pending') return watch.status === 'pending_review';
-                return true;
-            });
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="empty-state">No watches found matching your criteria.</div>';
+                return;
+            }
 
-            filtered.forEach(watch => {
-                const card = createWatchCard(watch);
-                grid.appendChild(card);
-            });
+            grid.innerHTML = filtered.map(watch => createWatchCard(watch)).join('');
         }
 
         function createWatchCard(watch) {
-            const card = document.createElement('div');
-            card.className = `watch-card ${watch.dialColor === 'blue' || watch.dialColor === 'black' ? 'favorite' : ''}`;
-
             const dialBadgeClass = watch.dialColor === 'blue' ? 'blue' : 
                                   watch.dialColor === 'black' ? 'black' :
                                   watch.dialColor === 'champagne' ? 'champagne' : 'silver';
@@ -671,153 +605,111 @@
             const statusClass = watch.status === 'pending_review' ? 'pending' :
                                watch.status === 'liked' ? 'liked' :
                                watch.status === 'passed' ? 'passed' : 'sold';
-
             const statusText = watch.status === 'pending_review' ? 'Pending Review' :
                               watch.status === 'liked' ? 'Liked ⭐' :
                               watch.status === 'passed' ? 'Passed' : 'Sold';
 
-            // Create image HTML - use proxy or fallback for all images
-            let imageHtml = '';
-            const listingLink = watch.listingUrl || watch.link;
+            const vendorConfig = VENDOR_CONFIG[watch.source] || { logo: '', color: '#1a1a2e' };
             
-            // Try to load image, but always have fallback ready
-            if (watch.imageUrl) {
-                // Use a data URI pattern that forces the onerror to fire if image fails
-                imageHtml = `<a href="${listingLink}" target="_blank" class="watch-image-link">
-                    <img src="${watch.imageUrl}" 
-                         alt="Rolex Datejust ${watch.reference}" 
-                         class="watch-image" 
-                         loading="lazy"
-                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
-                    <div class="watch-image no-image" style="display: none;">
-                        <div>📷</div>
-                        <div style="font-size: 0.875rem; margin-top: 0.5rem;">Click to view photos</div>
+            // Use local image if available, otherwise remote URL, otherwise placeholder
+            let imageHtml = '';
+            const imageUrl = watch.localImagePath || watch.imageUrl;
+            
+            if (imageUrl) {
+                imageHtml = `
+                    <div class="watch-image-container">
+                        <img src="${imageUrl}" 
+                             alt="${watch.brand || 'Rolex'} ${watch.reference}" 
+                             class="watch-image"
+                             loading="lazy"
+                             onerror="this.parentElement.innerHTML='<div class=\\'watch-image no-image\\'><div>📷</div><div style=\\'font-size:0.875rem;margin-top:0.5rem\\'>Image unavailable</div></div>'">
+                        <div class="vendor-badge">
+                            <img src="${vendorConfig.logo}" alt="${watch.source}" onerror="this.style.display='none'">
+                            <span>${watch.source}</span>
+                        </div>
                     </div>
-                </a>`;
+                `;
             } else {
-                imageHtml = `<a href="${listingLink}" target="_blank" class="watch-image-link">
-                    <div class="watch-image no-image">
-                        <div>📷</div>
-                        <div style="font-size: 0.875rem; margin-top: 0.5rem;">Click to view photos</div>
+                imageHtml = `
+                    <div class="watch-image-container">
+                        <div class="watch-image no-image">
+                            <div>📷</div>
+                            <div style="font-size:0.875rem;margin-top:0.5rem">No image available</div>
+                        </div>
+                        <div class="vendor-badge">
+                            <img src="${vendorConfig.logo}" alt="${watch.source}" onerror="this.style.display='none'">
+                            <span>${watch.source}</span>
+                        </div>
                     </div>
-                </a>`;
+                `;
             }
 
-            // Get search name if available
-            const searchName = watch.searchName || (watch.searchId ? 'Unknown Search' : 'Manual Entry');
-            const brandName = watch.brand || 'Rolex';
-            
-            card.innerHTML = `
-                ${imageHtml}
-                <div class="watch-header">
-                    <div>
-                        <div class="watch-title">${brandName} ${watch.reference}</div>
-                        <div class="watch-ref">${watch.year} • ${watch.size}</div>
-                        ${watch.searchName ? `<div style="font-size: 0.75rem; color: var(--gold); margin-top: 2px;">🔍 ${watch.searchName}</div>` : ''}
+            return `
+                <div class="watch-card ${watch.dialColor === 'blue' || watch.dialColor === 'black' ? 'favorite' : ''}">
+                    ${imageHtml}
+                    <div class="watch-header">
+                        <div>
+                            <div class="watch-title">${watch.brand || 'Rolex'} ${watch.reference}</div>
+                            <div class="watch-ref">${watch.year} • ${watch.size}</div>
+                            ${watch.searchName ? `<div style="font-size:0.75rem;color:var(--gold);margin-top:2px;">🔍 ${watch.searchName}</div>` : ''}
+                        </div>
+                        <span class="dial-badge ${dialBadgeClass}">${watch.dialColor}</span>
                     </div>
-                    <span class="dial-badge ${dialBadgeClass}">${watch.dialColor}</span>
-                </div>
-                <div class="watch-body">
-                    <span class="price-tag ${priceClass}">${priceText}</span>
-                    
-                    <div class="spec-grid">
-                        <div class="spec">
-                            <span class="spec-label">Dial</span>
-                            <span class="spec-value">${watch.dialType}</span>
+                    <div class="watch-body">
+                        <span class="price-tag ${priceClass}">${priceText}</span>
+                        
+                        <div class="spec-grid">
+                            <div class="spec">
+                                <span class="spec-label">Dial</span>
+                                <span class="spec-value">${watch.dialType}</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Case</span>
+                                <span class="spec-value">${watch.case}</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Bracelet</span>
+                                <span class="spec-value">${watch.bracelet}</span>
+                            </div>
+                            <div class="spec">
+                                <span class="spec-label">Added</span>
+                                <span class="spec-value">${watch.dateAdded}</span>
+                            </div>
                         </div>
-                        <div class="spec">
-                            <span class="spec-label">Case</span>
-                            <span class="spec-value">${watch.case}</span>
-                        </div>
-                        <div class="spec">
-                            <span class="spec-label">Bracelet</span>
-                            <span class="spec-value">${watch.bracelet}</span>
-                        </div>
-                        <div class="spec">
-                            <span class="spec-label">Source</span>
-                            <span class="spec-value">${watch.source}</span>
-                        </div>
-                    </div>
 
-                    <a href="${watch.link}" target="_blank" class="source-link">
-                        View Listing →
-                    </a>
+                        <a href="${watch.link}" target="_blank" class="source-link">
+                            View on ${watch.source} →
+                        </a>
 
-                    <div class="notes">
-                        <strong>Notes:</strong> ${watch.notes}
-                    </div>
+                        ${watch.notes ? `<div class="notes"><strong>Notes:</strong> ${watch.notes}</div>` : ''}
 
-                    <div class="status-bar">
-                        <span class="status-badge ${statusClass}">${statusText}</span>
-                        ${watch.geoffRating ? `<span class="status-badge liked">Rating: ${watch.geoffRating}/10</span>` : ''}
+                        <div class="status-bar">
+                            <span class="status-badge ${statusClass}">${statusText}</span>
+                            ${watch.geoffRating ? `<span class="status-badge liked">Rating: ${watch.geoffRating}/10</span>` : ''}
+                        </div>
                     </div>
                 </div>
             `;
-
-            return card;
         }
 
-        function setupFilters(watches) {
+        function setupFilters() {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     buttons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    renderWatches(watches, btn.dataset.filter);
+                    applyFilters();
                 });
             });
         }
 
-        function renderSources(sources) {
-            const grid = document.getElementById('sources-grid');
-            grid.innerHTML = '';
-
-            sources.forEach(source => {
-                const link = document.createElement('a');
-                link.href = source.url;
-                link.target = '_blank';
-                link.className = 'source-item';
-                
-                const statusClass = source.active ? 'active' : 'pending';
-                const statusText = source.active ? 'Active' : 'Soon';
-                
-                link.innerHTML = `
-                    <span class="source-name">${source.name}</span>
-                    <span class="source-status ${statusClass}">${statusText}</span>
-                `;
-                
-                grid.appendChild(link);
-            });
-        }
-
-        // Get search ID from URL if present
-        function getSearchIdFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('search');
-        }
-
-        // Load search config to get search name
-        async function loadSearchInfo() {
-            const searchId = getSearchIdFromUrl();
-            if (searchId) {
-                try {
-                    const response = await fetch('search-config.json');
-                    const config = await response.json();
-                    const search = config.searches.find(s => s.id === searchId) || 
-                                  config.completedSearches.find(s => s.id === searchId);
-                    if (search) {
-                        document.getElementById('search-subtitle').textContent = search.name;
-                        document.title = `${search.name} | Watch Hunt Results`;
-                    }
-                } catch (e) {
-                    console.error('Failed to load search info:', e);
-                }
-            }
+        function applyFilters() {
+            const activeBtn = document.querySelector('.filter-btn.active');
+            const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+            renderWatches(allWatches, filter);
         }
 
         // Load on page load
-        loadSearchInfo();
         loadWatches();
 
         // Auto-refresh every 5 minutes

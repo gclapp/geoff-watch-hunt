@@ -29,14 +29,11 @@
         "bobs_watches",
         "bulang_sons",
         "bezel",
-        "crown_and_caliber",
-        "woe",
-        "watchrecon",
-        "reddit_watchexchange"
+        "crown_and_caliber"
       ],
       "status": "active",
       "createdAt": "2026-03-09",
-      "lastRun": "2026-03-10T00:08:10.794526",
+      "lastRun": "2026-03-10T02:04:06.771491",
       "watchesFound": 5,
       "schedule": "twice_daily"
     },
@@ -65,14 +62,11 @@
         "bobs_watches",
         "bulang_sons",
         "bezel",
-        "crown_and_caliber",
-        "woe",
-        "watchrecon",
-        "reddit_watchexchange"
+        "crown_and_caliber"
       ],
       "status": "active",
       "createdAt": "2026-03-09",
-      "lastRun": "2026-03-10T00:08:23.677477",
+      "lastRun": "2026-03-10T02:08:13.657262",
       "watchesFound": 0,
       "schedule": "twice_daily"
     }
