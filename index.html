@@ -611,18 +611,36 @@
 
             const vendorConfig = VENDOR_CONFIG[watch.source] || { logo: '', color: '#1a1a2e' };
             
-            // Use local image if available, otherwise remote URL, otherwise placeholder
-            let imageHtml = '';
-            const imageUrl = watch.localImagePath || watch.imageUrl;
+            // Determine best image URL to use
+            let imageUrl = null;
+            let isRemoteImage = false;
             
+            // Check local image first
+            if (watch.localImagePath && !watch.localImagePath.endsWith('.svg')) {
+                imageUrl = watch.localImagePath;
+            }
+            // Then check remote image URL (but not SVG placeholders)
+            else if (watch.imageUrl && 
+                     !watch.imageUrl.endsWith('.svg') && 
+                     !watch.imageUrl.startsWith('data:image') &&
+                     (watch.imageUrl.startsWith('http://') || watch.imageUrl.startsWith('https://'))) {
+                imageUrl = watch.imageUrl;
+                isRemoteImage = true;
+            }
+            
+            // Generate image HTML
+            let imageHtml = '';
             if (imageUrl) {
+                // Use a proxy-friendly approach for remote images
+                const imgSrc = isRemoteImage ? imageUrl : imageUrl;
                 imageHtml = `
                     <div class="watch-image-container">
-                        <img src="${imageUrl}" 
+                        <img src="${imgSrc}" 
                              alt="${watch.brand || 'Rolex'} ${watch.reference}" 
                              class="watch-image"
                              loading="lazy"
-                             onerror="this.parentElement.innerHTML='<div class=\\'watch-image no-image\\'><div>📷</div><div style=\\'font-size:0.875rem;margin-top:0.5rem\\'>Image unavailable</div></div>'">
+                             referrerpolicy="no-referrer"
+                             onerror="this.onerror=null; this.src=''; this.parentElement.innerHTML='<div class=\'watch-image no-image\'><div>🏛️</div><div style=\'font-size:0.875rem;margin-top:0.5rem\'>View on ${watch.source}</div></div>'">
                         <div class="vendor-badge">
                             <img src="${vendorConfig.logo}" alt="${watch.source}" onerror="this.style.display='none'">
                             <span>${watch.source}</span>
@@ -630,11 +648,12 @@
                     </div>
                 `;
             } else {
+                // No image - show clickable placeholder that links to listing
                 imageHtml = `
-                    <div class="watch-image-container">
+                    <div class="watch-image-container" style="cursor: pointer;" onclick="window.open('${watch.link}', '_blank')">
                         <div class="watch-image no-image">
-                            <div>📷</div>
-                            <div style="font-size:0.875rem;margin-top:0.5rem">No image available</div>
+                            <div>⌚</div>
+                            <div style="font-size:0.875rem;margin-top:0.5rem;color:var(--gold);">Click to view on ${watch.source}</div>
                         </div>
                         <div class="vendor-badge">
                             <img src="${vendorConfig.logo}" alt="${watch.source}" onerror="this.style.display='none'">
@@ -690,9 +709,7 @@
                     </div>
                 </div>
             `;
-        }
-
-        function setupFilters() {
+        }        function setupFilters() {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
                 btn.addEventListener('click', () => {

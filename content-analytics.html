@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Analytics Dashboard | Geoff + Cicero</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid #334155;
+        }
+        h1 { font-size: 2rem; color: #60a5fa; margin-bottom: 10px; }
+        .subtitle { color: #94a3b8; font-size: 1.1rem; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 24px;
+            border: 1px solid #334155;
+        }
+        .card h2 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .metric {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+        .metric-change {
+            font-size: 0.875rem;
+            margin-top: 8px;
+        }
+        .positive { color: #4ade80; }
+        .negative { color: #f87171; }
+        .platform-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: #334155;
+            border: none;
+            border-radius: 8px;
+            color: #e2e8f0;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            background: #60a5fa;
+            color: #0f172a;
+        }
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .content-table th,
+        .content-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #334155;
+        }
+        .content-table th {
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        .content-table tr:hover {
+            background: #334155;
+        }
+        .platform-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-linkedin { background: #0077b5; color: white; }
+        .badge-twitter { background: #1da1f2; color: white; }
+        .badge-substack { background: #ff6719; color: white; }
+        .engagement-bar {
+            height: 8px;
+            background: #334155;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        .engagement-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #60a5fa, #4ade80);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏛️ Content Analytics Dashboard</h1>
+            <p class="subtitle">Geoff + Cicero | AI in Healthcare & Product Development</p>
+        </header>
+
+        <!-- Key Metrics -->
+        <div class="grid">
+            <div class="card">
+                <h2>LinkedIn Followers</h2>
+                <div class="metric" id="linkedin-followers">--</div>
+                <div class="metric-change positive" id="linkedin-growth">--</div>
+            </div>
+            <div class="card">
+                <h2>Twitter Followers</h2>
+                <div class="metric" id="twitter-followers">--</div>
+                <div class="metric-change positive" id="twitter-growth">--</div>
+            </div>
+            <div class="card">
+                <h2>Substack Subscribers</h2>
+                <div class="metric" id="substack-subs">--</div>
+                <div class="metric-change positive" id="substack-growth">--</div>
+            </div>
+            <div class="card">
+                <h2>Total Impressions (7d)</h2>
+                <div class="metric" id="total-impressions">--</div>
+                <div class="metric-change" id="impressions-change">--</div>
+            </div>
+        </div>
+
+        <!-- Platform Tabs -->
+        <div class="card">
+            <div class="platform-tabs">
+                <button class="tab active" onclick="showPlatform('all')">All Platforms</button>
+                <button class="tab" onclick="showPlatform('linkedin')">LinkedIn</button>
+                <button class="tab" onclick="showPlatform('twitter')">Twitter/X</button>
+                <button class="tab" onclick="showPlatform('substack')">Substack</button>
+            </div>
+
+            <!-- Content Performance Table -->
+            <table class="content-table" id="content-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Platform</th>
+                        <th>Content</th>
+                        <th>Impressions</th>
+                        <th>Engagements</th>
+                        <th>Engagement Rate</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Data populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid">
+            <div class="card">
+                <h2>Engagement Over Time</h2>
+                <div class="chart-container">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h2>Platform Distribution</h2>
+                <div class="chart-container">
+                    <canvas id="platformChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card">
+            <h2>Recent Activity</h2>
+            <div id="recent-activity" style="margin-top: 15px;">
+                <p style="color: #94a3b8;">No recent activity recorded yet.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data structure - will be replaced with real data
+        let contentData = [];
+        
+        // Initialize charts
+        const engagementCtx = document.getElementById('engagementChart').getContext('2d');
+        const platformCtx = document.getElementById('platformChart').getContext('2d');
+        
+        let engagementChart = new Chart(engagementCtx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'LinkedIn',
+                    data: [],
+                    borderColor: '#0077b5',
+                    backgroundColor: 'rgba(0, 119, 181, 0.1)',
+                    tension: 0.4
+                }, {
+                    label: 'Twitter',
+                    data: [],
+                    borderColor: '#1da1f2',
+                    backgroundColor: 'rgba(29, 161, 242, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: '#e2e8f0' }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' }
+                    },
+                    x: {
+                        ticks: { color: '#94a3b8' },
+                        grid: { color: '#334155' }
+                    }
+                }
+            }
+        });
+        
+        let platformChart = new Chart(platformCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['LinkedIn', 'Twitter', 'Substack'],
+                datasets: [{
+                    data: [0, 0, 0],
+                    backgroundColor: ['#0077b5', '#1da1f2', '#ff6719']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#e2e8f0' }
+                    }
+                }
+            }
+        });
+
+        // Platform filter
+        function showPlatform(platform) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            renderTable(platform);
+        }
+
+        // Render table
+        function renderTable(filter = 'all') {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+            
+            const filtered = filter === 'all' 
+                ? contentData 
+                : contentData.filter(c => c.platform === filter);
+            
+            filtered.forEach(item => {
+                const row = document.createElement('tr');
+                const engagementRate = ((item.engagements / item.impressions) * 100).toFixed(2);
+                
+                row.innerHTML = `
+                    <td>${item.date}</td>
+                    <td><span class="platform-badge badge-${item.platform}">${item.platform}</span></td>
+                    <td>${item.title}</td>
+                    <td>${item.impressions.toLocaleString()}</td>
+                    <td>${item.engagements.toLocaleString()}</td>
+                    <td>
+                        ${engagementRate}%
+                        <div class="engagement-bar">
+                            <div class="engagement-fill" style="width: ${Math.min(engagementRate * 10, 100)}%"></div>
+                        </div>
+                    </td>
+                    <td>${item.status}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Load data from JSON file
+        async function loadData() {
+            try {
+                const response = await fetch('content-analytics-data.json');
+                if (response.ok) {
+                    contentData = await response.json();
+                    updateDashboard();
+                }
+            } catch (e) {
+                console.log('No data file found yet');
+            }
+        }
+
+        // Update dashboard with data
+        function updateDashboard() {
+            // Update metrics
+            const linkedinData = contentData.filter(c => c.platform === 'linkedin');
+            const twitterData = contentData.filter(c => c.platform === 'twitter');
+            const substackData = contentData.filter(c => c.platform === 'substack');
+            
+            // Calculate totals
+            const totalImpressions = contentData.reduce((sum, c) => sum + c.impressions, 0);
+            const totalEngagements = contentData.reduce((sum, c) => sum + c.engagements, 0);
+            
+            // Update charts
+            // ... (would update with real data)
+            
+            renderTable();
+        }
+
+        // Initial load
+        loadData();
+    </script>
+</body>
+</html>
