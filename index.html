@@ -632,8 +632,8 @@
             // Generate image HTML
             let imageHtml = '';
             if (imageUrl) {
-                // Use a proxy-friendly approach for remote images
-                const imgSrc = isRemoteImage ? imageUrl : imageUrl;
+                // Add cache-busting query param for local images
+                const imgSrc = isRemoteImage ? imageUrl : imageUrl + '?v=2';
                 imageHtml = `
                     <div class="watch-image-container">
                         <img src="${imgSrc}" 
