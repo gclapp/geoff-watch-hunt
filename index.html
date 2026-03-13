@@ -617,7 +617,8 @@
             
             // Check local image first
             if (watch.localImagePath && !watch.localImagePath.endsWith('.svg')) {
-                imageUrl = watch.localImagePath;
+                // Ensure path starts with ./ for proper relative resolution
+                imageUrl = watch.localImagePath.startsWith('./') ? watch.localImagePath : './' + watch.localImagePath;
             }
             // Then check remote image URL (but not SVG placeholders)
             else if (watch.imageUrl && 
