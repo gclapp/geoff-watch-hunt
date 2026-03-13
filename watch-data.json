@@ -37,7 +37,8 @@
       "dateAdded": "2026-03-04",
       "notes": "Serviced vintage, Cal 1570, from email Mar 4 7:26 AM",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24/watch_6.jpg"
     },
     {
       "id": 7,
@@ -57,7 +58,8 @@
       "dateAdded": "2026-03-04",
       "notes": "Silver dial (not preferred), from email Mar 4 2:29 PM",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24/watch_7.jpg"
     },
     {
       "id": 8,
@@ -77,7 +79,8 @@
       "dateAdded": "2026-03-04",
       "notes": "Day-Date (not Datejust), from email Mar 4 2:29 PM",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24/watch_8.jpg"
     },
     {
       "id": 1,
@@ -97,7 +100,8 @@
       "dateAdded": "2026-02-28",
       "notes": "Caliber 3035 (quickset), tritium patina, highly recommended",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/bobs_watches/watch_1.jpg"
     },
     {
       "id": 2,
@@ -137,7 +141,8 @@
       "dateAdded": "2026-02-28",
       "notes": "Sigma dial (gold markers), all steel",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24_(australia)/watch_3.jpg"
     },
     {
       "id": 4,
@@ -157,7 +162,8 @@
       "dateAdded": "2026-02-28",
       "notes": "Rare deep blue, 'immaculate' condition",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24_(switzerland)/watch_4.jpg"
     },
     {
       "id": 5,
@@ -177,7 +183,8 @@
       "dateAdded": "2026-02-28",
       "notes": "Need to verify if two-tone or all-steel",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24_(poland)/watch_5.jpg"
     },
     {
       "reference": "1601",
@@ -198,7 +205,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_9_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_9.jpg"
     },
     {
       "reference": "1601",
@@ -219,7 +226,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_10_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_10.jpg"
     },
     {
       "reference": "1601",
@@ -240,7 +247,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_11_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_11.jpg"
     },
     {
       "reference": "1601",
@@ -261,7 +268,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_12_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_12.jpg"
     },
     {
       "reference": "1601",
@@ -282,7 +289,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_13_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_13.jpg"
     },
     {
       "reference": "1603",
@@ -303,7 +310,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_14_a97b0633.jpg"
+      "localImagePath": "images/chrono24/watch_14.jpg"
     },
     {
       "reference": "16014",
@@ -326,7 +333,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_15_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_15.jpg"
     },
     {
       "reference": "16014",
@@ -349,7 +356,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_16_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_16.jpg"
     },
     {
       "reference": "16014",
@@ -372,7 +379,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_17_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_17.jpg"
     },
     {
       "reference": "16014",
@@ -395,7 +402,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_18_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_18.jpg"
     },
     {
       "reference": "16014",
@@ -418,7 +425,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_19_20260310.jpg"
+      "localImagePath": "images/chrono24/watch_19.jpg"
     },
     {
       "reference": "1601",
@@ -442,7 +449,7 @@
       "status": "pending_review",
       "geoffRating": null,
       "geoffNotes": null,
-      "localImagePath": "images/chrono24/watch_20_20260313.jpg"
+      "localImagePath": "images/chrono24/watch_20.jpg"
     }
   ],
   "patterns": [
