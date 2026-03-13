@@ -115,13 +115,14 @@
       "price": null,
       "source": "Bulang & Sons",
       "link": "https://bulangandsons.com/products/rolex-datejust-steel-and-gold-16013-blue-dial-w1415",
-      "imageUrl": "https://cdn.shopify.com/s/files/1/0266/2003/3539/files/Rolex-Datejust-16013-Blue-Dial-W1415-1.jpg?v=1698765432",
+      "imageUrl": null,
       "listingUrl": "https://bulangandsons.com/products/rolex-datejust-steel-and-gold-16013-blue-dial-w1415",
       "status": "pending_review",
       "dateAdded": "2026-02-28",
-      "notes": "Desirable patina, serial 590xxxx, fully checked by watchmaker",
+      "notes": "Desirable patina, serial 590xxxx, fully checked by watchmaker [Image needs manual download from listing]",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": null
     },
     {
       "id": 3,
