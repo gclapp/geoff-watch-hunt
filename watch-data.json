@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-13T02:12:31Z",
+  "lastUpdated": "2026-03-13T17:12:18Z",
   "preferences": {
     "favoriteDials": [
       "blue",
@@ -419,6 +419,30 @@
       "geoffRating": null,
       "geoffNotes": null,
       "localImagePath": "images/chrono24/watch_19_20260310.jpg"
+    },
+    {
+      "reference": "1601",
+      "year": 1971,
+      "dialColor": "champagne",
+      "dialType": "Champagne",
+      "case": "Two-tone",
+      "size": "36mm",
+      "bracelet": "Unknown",
+      "price": null,
+      "source": "Chrono24",
+      "link": "https://www.chrono24.com/rolex/rolex-datejust-36--id45326476.htm",
+      "imageUrl": "data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\"%3E%3C/svg%3E",
+      "listingUrl": "https://www.chrono24.com/rolex/rolex-datejust-36--id45326476.htm",
+      "notes": "Rolex Datejust 36 Two Tone | Champagne Dial | Ref 1601 | 2.84M (1971)",
+      "searchId": "rolex-datejust-1973",
+      "searchName": "1973 Rolex Datejust",
+      "brand": "Rolex",
+      "id": 20,
+      "dateAdded": "2026-03-13",
+      "status": "pending_review",
+      "geoffRating": null,
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24/watch_20_20260313.jpg"
     }
   ],
   "patterns": [
