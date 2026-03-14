@@ -408,6 +408,203 @@
         .status-badge.passed { background: var(--gray-200); color: var(--gray-600); }
         .status-badge.sold { background: #fee2e2; color: #991b1b; }
 
+        /* Sold State - Gray out and disable */
+        .watch-card.sold {
+            opacity: 0.5;
+            filter: grayscale(100%);
+            pointer-events: none;
+        }
+        
+        .watch-card.sold .watch-image-container {
+            position: relative;
+        }
+        
+        .watch-card.sold .watch-image-container::after {
+            content: "SOLD";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(239, 68, 68, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-radius: 8px;
+            z-index: 10;
+        }
+
+        /* Rating System */
+        .rating-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .rating-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 0.25rem;
+        }
+        
+        .star {
+            font-size: 1.5rem;
+            color: var(--gray-300);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .star:hover,
+        .star.active {
+            color: var(--gold);
+        }
+        
+        .star-rating.readonly .star {
+            cursor: default;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--gray-200);
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            border-color: var(--gold);
+            background: var(--gray-50);
+        }
+        
+        .action-btn.sold-btn {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+        
+        .action-btn.sold-btn:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Sort Controls */
+        .sort-controls {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .sort-controls label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--gray-600);
+        }
+        
+        .sort-select {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 0.875rem;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .sort-select:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        /* Footer */
+        .search-footer {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .search-footer h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .source-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .source-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+        }
+        
+        .source-item img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+        
+        .source-info {
+            flex: 1;
+        }
+        
+        .source-name {
+            font-weight: 500;
+            font-size: 0.875rem;
+            color: var(--gray-800);
+        }
+        
+        .source-time {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+        
+        .source-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        
+        .source-status.active {
+            background: var(--success);
+        }
+        
+        .source-status.inactive {
+            background: var(--gray-400);
+        }
+
         .empty-state {
             text-align: center;
             padding: 4rem 2rem;
@@ -473,6 +670,24 @@
             </div>
         </div>
 
+        <!-- Sort Controls -->
+        <div class="sort-controls">
+            <label>Sort by:</label>
+            <select class="sort-select" id="sort-select">
+                <option value="dateAdded-desc">Date Added (Newest)</option>
+                <option value="dateAdded-asc">Date Added (Oldest)</option>
+                <option value="rating-desc">Your Rating (High to Low)</option>
+                <option value="rating-asc">Your Rating (Low to High)</option>
+                <option value="year-desc">Year (Newest)</option>
+                <option value="year-asc">Year (Oldest)</option>
+                <option value="price-asc">Price (Low to High)</option>
+                <option value="price-desc">Price (High to Low)</option>
+            </select>
+            <label style="margin-left: 1rem;">
+                <input type="checkbox" id="hide-sold"> Hide Sold
+            </label>
+        </div>
+
         <!-- Regular Filters -->
         <div class="filters">
             <div class="filter-group">
@@ -486,6 +701,14 @@
 
         <div class="watch-grid" id="watch-grid">
             <div class="loading">Loading watches...</div>
+        </div>
+
+        <!-- Search Sources Footer -->
+        <div class="search-footer" id="search-footer">
+            <h3>🔍 Search Sources</h3>
+            <div class="source-list" id="source-list">
+                <!-- Populated by JavaScript -->
+            </div>
         </div>
     </div>
 
@@ -724,8 +947,215 @@
         function applyFilters() {
             const activeBtn = document.querySelector('.filter-btn.active');
             const filter = activeBtn ? activeBtn.dataset.filter : 'all';
-            renderWatches(allWatches, filter);
+            applySortingAndFiltering();
         }
+
+        // Sorting functionality
+        let currentSort = 'dateAdded-desc';
+        let hideSold = false;
+
+        function setupSorting() {
+            const sortSelect = document.getElementById('sort-select');
+            const hideSoldCheckbox = document.getElementById('hide-sold');
+            
+            sortSelect.addEventListener('change', (e) => {
+                currentSort = e.target.value;
+                applySortingAndFiltering();
+            });
+            
+            hideSoldCheckbox.addEventListener('change', (e) => {
+                hideSold = e.target.checked;
+                applySortingAndFiltering();
+            });
+        }
+
+        function applySortingAndFiltering() {
+            const activeBtn = document.querySelector('.filter-btn.active');
+            const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+            
+            let filtered = allWatches;
+            
+            // Apply filter
+            if (filter !== 'all') {
+                filtered = filtered.filter(watch => {
+                    if (filter === 'blue') return watch.dialColor === 'blue';
+                    if (filter === 'champagne') return watch.dialColor === 'champagne';
+                    if (filter === 'pending') return watch.status === 'pending_review';
+                    return true;
+                });
+            }
+            
+            // Apply vendor filter
+            if (activeVendorFilter !== 'all') {
+                filtered = filtered.filter(w => w.source === activeVendorFilter);
+            }
+            
+            // Hide sold if checked
+            if (hideSold) {
+                filtered = filtered.filter(w => w.status !== 'sold');
+            }
+            
+            // Apply sorting
+            filtered = sortWatches(filtered, currentSort);
+            
+            renderWatches(filtered, 'all'); // Pass 'all' since we already filtered
+        }
+
+        function sortWatches(watches, sortType) {
+            const sorted = [...watches];
+            
+            switch(sortType) {
+                case 'dateAdded-desc':
+                    sorted.sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded));
+                    break;
+                case 'dateAdded-asc':
+                    sorted.sort((a, b) => new Date(a.dateAdded) - new Date(b.dateAdded));
+                    break;
+                case 'rating-desc':
+                    sorted.sort((a, b) => (b.geoffRating || 0) - (a.geoffRating || 0));
+                    break;
+                case 'rating-asc':
+                    sorted.sort((a, b) => (a.geoffRating || 0) - (b.geoffRating || 0));
+                    break;
+                case 'year-desc':
+                    sorted.sort((a, b) => b.year - a.year);
+                    break;
+                case 'year-asc':
+                    sorted.sort((a, b) => a.year - b.year);
+                    break;
+                case 'price-asc':
+                    sorted.sort((a, b) => extractPrice(a.price) - extractPrice(b.price));
+                    break;
+                case 'price-desc':
+                    sorted.sort((a, b) => extractPrice(b.price) - extractPrice(a.price));
+                    break;
+            }
+            
+            return sorted;
+        }
+
+        function extractPrice(priceStr) {
+            if (!priceStr) return 0;
+            const match = priceStr.replace(/,/g, '').match(/(\d+)/);
+            return match ? parseInt(match[1]) : 0;
+        }
+
+        // Rating functionality
+        function createRatingStars(watchId, currentRating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                const active = i <= (currentRating || 0) ? 'active' : '';
+                stars += `<span class="star ${active}" data-rating="${i}" onclick="rateWatch('${watchId}', ${i})">★</span>`;
+            }
+            return stars;
+        }
+
+        function rateWatch(watchId, rating) {
+            const watch = allWatches.find(w => w.id === watchId);
+            if (watch) {
+                watch.geoffRating = rating;
+                // In a real app, you'd save this to the server
+                console.log(`Rated watch ${watchId}: ${rating}/5`);
+                applySortingAndFiltering();
+            }
+        }
+
+        // Mark as sold functionality
+        function markAsSold(watchId) {
+            const watch = allWatches.find(w => w.id === watchId);
+            if (watch) {
+                watch.status = 'sold';
+                console.log(`Marked watch ${watchId} as sold`);
+                applySortingAndFiltering();
+            }
+        }
+
+        // Render search sources footer
+        function renderSearchSources() {
+            const container = document.getElementById('source-list');
+            
+            // Get unique sources and their last search time
+            const sources = {};
+            allWatches.forEach(watch => {
+                const source = watch.source;
+                if (!sources[source]) {
+                    sources[source] = {
+                        name: source,
+                        lastSearch: watch.dateAdded,
+                        count: 0
+                    };
+                }
+                sources[source].count++;
+                if (watch.dateAdded > sources[source].lastSearch) {
+                    sources[source].lastSearch = watch.dateAdded;
+                }
+            });
+            
+            let html = '';
+            Object.values(sources).sort((a, b) => b.count - a.count).forEach(source => {
+                const config = VENDOR_CONFIG[source.name] || { logo: '', color: '#1a1a2e' };
+                const timeAgo = getTimeAgo(source.lastSearch);
+                
+                html += `
+                    <div class="source-item">
+                        <div class="source-status active"></div>
+                        <img src="${config.logo}" alt="${source.name}" onerror="this.style.display='none'">
+                        <div class="source-info">
+                            <div class="source-name">${source.name}</div>
+                            <div class="source-time">${source.count} watches • Last: ${timeAgo}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html || '<p>No search sources found.</p>';
+        }
+
+        function getTimeAgo(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffTime = Math.abs(now - date);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 1) return 'Today';
+            if (diffDays === 2) return 'Yesterday';
+            if (diffDays < 7) return `${diffDays} days ago`;
+            if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+            return date.toLocaleDateString();
+        }
+
+        // Update createWatchCard to include rating and sold button
+        const originalCreateWatchCard = createWatchCard;
+        createWatchCard = function(watch) {
+            const card = originalCreateWatchCard(watch);
+            
+            // Add sold class if status is sold
+            const soldClass = watch.status === 'sold' ? 'sold' : '';
+            
+            // Add rating section and action buttons before closing watch-body div
+            const ratingSection = `
+                <div class="rating-section">
+                    <div class="rating-label">Your Rating</div>
+                    <div class="star-rating">
+                        ${createRatingStars(watch.id, watch.geoffRating)}
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    ${watch.status !== 'sold' ? `<button class="action-btn sold-btn" onclick="markAsSold(${watch.id}); event.stopPropagation();">Mark as Sold</button>` : ''}
+                </div>
+            `;
+            
+            // Insert before the closing </div> of watch-body
+            return card.replace('</div>\n                </div>\n            </div>\n        </div>', ratingSection + '</div></div></div></div>').replace('class="watch-card', `class="watch-card ${soldClass}`);
+        };
+
+        // Override loadWatches to include footer rendering
+        const originalLoadWatches = loadWatches;
+        loadWatches = async function() {
+            await originalLoadWatches();
+            renderSearchSources();
+            setupSorting();
+        };
 
         // Load on page load
         loadWatches();
