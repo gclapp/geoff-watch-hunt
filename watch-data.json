@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-17T17:08:13Z",
+  "lastUpdated": "2026-03-18T02:08:10Z",
   "preferences": {
     "favoriteDials": [
       "blue",
@@ -451,6 +451,29 @@
       "geoffRating": null,
       "geoffNotes": null,
       "localImagePath": "images/chrono24/watch_20.jpg"
+    },
+    {
+      "reference": "16014",
+      "year": 1978,
+      "dialColor": "champagne",
+      "dialType": "Champagne",
+      "case": "Two-tone",
+      "size": "36mm",
+      "bracelet": "Unknown",
+      "price": null,
+      "source": "Chrono24",
+      "link": "https://www.chrono24.com/rolex/-oyster-datejust-16014-20--70--36--18k--ss--ra520b--id44316356.htm",
+      "imageUrl": "data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1 1\"%3E%3C/svg%3E",
+      "listingUrl": "https://www.chrono24.com/rolex/-oyster-datejust-16014-20--70--36--18k--ss--ra520b--id44316356.htm",
+      "notes": "Rolex Datejust 36 16014 Automatic 1978 Gold/Steel Very good",
+      "searchId": "rolex-datejust-1973",
+      "searchName": "1973 Rolex Datejust",
+      "brand": "Rolex",
+      "id": 21,
+      "dateAdded": "2026-03-18",
+      "status": "pending_review",
+      "geoffRating": null,
+      "geoffNotes": null
     }
   ],
   "patterns": [
