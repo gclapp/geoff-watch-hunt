@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-25T02:03:17Z",
+  "lastUpdated": "2026-05-28T17:03:03Z",
   "preferences": {
     "favoriteDials": [
       "blue",
@@ -473,7 +473,8 @@
       "dateAdded": "2026-03-18",
       "status": "pending_review",
       "geoffRating": null,
-      "geoffNotes": null
+      "geoffNotes": null,
+      "localImagePath": "images/chrono24/watch_21.jpg"
     }
   ],
   "patterns": [
