@@ -33,7 +33,7 @@
       ],
       "status": "active",
       "createdAt": "2026-03-09",
-      "lastRun": "2026-07-21T16:00:53.686664",
+      "lastRun": "2026-07-22T01:00:55.208844",
       "watchesFound": 7,
       "schedule": "twice_daily"
     },
@@ -66,7 +66,7 @@
       ],
       "status": "active",
       "createdAt": "2026-03-09",
-      "lastRun": "2026-07-21T16:01:41.636783",
+      "lastRun": "2026-07-22T01:01:44.361979",
       "watchesFound": 0,
       "schedule": "twice_daily"
     }
